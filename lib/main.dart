@@ -1,4 +1,5 @@
 import 'package:adv_test_app/provider/api_provider.dart';
+import 'package:adv_test_app/provider/count_provider.dart';
 import 'package:adv_test_app/viwes/cartpage.dart';
 import 'package:adv_test_app/viwes/detailpage.dart';
 import 'package:adv_test_app/viwes/home_page.dart';
@@ -12,6 +13,9 @@ void main() {
       providers: [
         ChangeNotifierProvider(
           create: (context) => ApiProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => CountProvider(),
         ),
       ],
       builder: (context, child) => MaterialApp(

@@ -1,6 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../provider/api_provider.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -13,13 +16,20 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     // TODO: implement initState
-    Timer(
-      Duration(seconds: 3),
-      () {
-        Navigator.pushReplacementNamed(context, 'homepage');
-      },
+
+    getdata(context).then(
+      (value) => Timer(
+        Duration(seconds: 3),
+        () {
+          Navigator.pushReplacementNamed(context, 'homepage');
+        },
+      ),
     );
     super.initState();
+  }
+
+  Future getdata(BuildContext context) async {
+    await Provider.of<ApiProvider>(context, listen: false).fetchdatafromapi();
   }
 
   @override
